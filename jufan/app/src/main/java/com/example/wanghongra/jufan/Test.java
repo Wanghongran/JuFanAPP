@@ -1,12 +1,12 @@
 package com.example.wanghongra.jufan;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Test extends AppCompatActivity {
+public class Test extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
