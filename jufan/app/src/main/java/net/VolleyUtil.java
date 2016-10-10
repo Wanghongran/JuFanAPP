@@ -28,6 +28,8 @@ public class VolleyUtil {
         if (mRequestQueue == null)
 //            throw new RuntimeException("请先初始化mRequestQueue") ;
             throw new RuntimeException("================mRequestQueue") ;
+
         return mRequestQueue ;
     }
+
 }

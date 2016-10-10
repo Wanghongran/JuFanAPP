@@ -15,4 +15,10 @@ public class HttpNet {
         Request request = new PostObjectRequest(url,param,listener);
         VolleyUtil.getRequestQueue().add(request) ;
     }
+
+    public static void getObjectMinongApi(String url,ResponseListener listener){
+
+        Request request = new GetObjectRequest(url,listener);
+        VolleyUtil.getRequestQueue().add(request) ;
+    }
 }
