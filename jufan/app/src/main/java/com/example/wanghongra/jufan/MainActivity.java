@@ -1,10 +1,12 @@
 package com.example.wanghongra.jufan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
@@ -17,6 +19,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ToggleButton but2, but1;
     private Fragment11 f11;
     private Fragment12 f12;
+    private ImageView zhibo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         but1.setOnClickListener(this);
         but2 = (ToggleButton) findViewById(R.id.but2);
         but2.setOnClickListener(this);
-
+        zhibo=(ImageView)findViewById(R.id.zhibo);
+         zhibo.setOnClickListener(this);
     }
 
     /*
@@ -73,6 +77,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 but2.setChecked(true);
                 but1.setChecked(false);
                 beginTransaction.replace(R.id.buju, f12).commit();
+                break;
+            case R.id.zhibo:
+                Intent i =new Intent(this,LivePublisherDemoActivity.class);
+                startActivity(i);
                 break;
         }
     }

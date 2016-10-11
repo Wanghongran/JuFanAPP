@@ -11,13 +11,14 @@ public class Zx {
     public String place;
     public String samllheadimg;
     public String midheadimg;
-
-    public Zx(String name, String livename, String samllheadimg, String place, String midheadimg) {
+    public String video;
+    public Zx(String name, String livename, String samllheadimg, String place, String midheadimg,String video) {
         this.name = name;
         this.livename = livename;
         this.samllheadimg = samllheadimg;
         this.place = place;
         this.midheadimg = midheadimg;
+        this.video = video;
     }
 
 

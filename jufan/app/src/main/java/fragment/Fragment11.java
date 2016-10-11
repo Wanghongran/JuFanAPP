@@ -76,5 +76,6 @@ public class Fragment11 extends Fragment{
         viewPager.setAdapter(adapter);
         tab_FindFragment_title.setupWithViewPager(viewPager);
         tab_FindFragment_title.setTabMode(TabLayout.MODE_FIXED);
+
     }
 }

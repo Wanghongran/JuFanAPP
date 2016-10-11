@@ -1,6 +1,7 @@
 package fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.App;
+import com.example.wanghongra.jufan.LiveActivity;
 import com.example.wanghongra.jufan.R;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.squareup.okhttp.OkHttpClient;
@@ -59,7 +62,7 @@ public class Zuixing extends Fragment{
             }
         }
     };
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.zx,container,false);
@@ -124,6 +127,15 @@ public class Zuixing extends Fragment{
                 ImageView datu;
             }
         });
+        mPullRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String url=aalist.get(position).video;
+                Intent i= new Intent(getActivity(), LiveActivity.class);
+                i.putExtra("url",url);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -157,7 +169,8 @@ public class Zuixing extends Fragment{
                 String livename =dx.optString("livename");
                 String place =dx.optString("place");
                 String samllheadimg =dx.optString("samllheadimg");
-                Zx r=new Zx(name,livename,place,samllheadimg,midheadimg);
+                String video=dx.optString("video");
+                Zx r=new Zx(name,livename,place,samllheadimg,midheadimg,video);
                 aalist.add(r);
                 Log.e("bxxxxxxxxxxxxxxxxxxxxxx",aalist.size()+"");
             }

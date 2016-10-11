@@ -2,6 +2,7 @@ package fragment;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.App;
+import com.example.wanghongra.jufan.LiveActivity;
 import com.example.wanghongra.jufan.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -143,6 +146,16 @@ public class Remen extends Fragment{
                 TextView name2;
             }
         });
+        mPullRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               String url=aalist.get(position-1).video;
+                Log.i("url",url);
+               Intent i= new Intent(getActivity(), LiveActivity.class);
+                i.putExtra("url",url);
+                 startActivity(i);
+            }
+        });
         mPullRefreshListView
                 .setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>()
                 {
@@ -196,9 +209,10 @@ public class Remen extends Fragment{
                 String livename =dx.optString("livename");
                 String place =dx.optString("place");
                 String smallheadimg =dx.optString("smallheadimg");
-                rm r=new rm(bigheadimg,name,livename,place,smallheadimg);
+                String video =dx.optString("video");
+                rm r=new rm(bigheadimg,name,livename,place,smallheadimg,video);
                 aalist.add(r);
-                Log.e("bxxxxxxxxxxxxxxxxxxxxxx",aalist.size()+"");
+                Log.e("bxxxxxxxxxxxxxxxxxxxxxx",aalist.size()+""+video.toString());
             }
             Message msg = new Message();
             msg.obj = aalist;
